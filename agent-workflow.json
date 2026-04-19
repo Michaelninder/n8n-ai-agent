@@ -11,7 +11,7 @@
       "typeVersion": 1.4,
       "position": [
         0,
-        0
+        -400
       ],
       "id": "5e881ee1-a113-4f7a-8b4e-c74121be523e",
       "name": "When chat message received",
@@ -25,8 +25,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        1280,
-        0
+        1176,
+        -400
       ],
       "id": "ac415646-ac03-4fd0-9eda-1f8b8b3a8115",
       "name": "AI Agent"
@@ -40,7 +40,7 @@
       "typeVersion": 1,
       "position": [
         224,
-        224
+        -176
       ],
       "id": "fc506bc1-41e5-4277-86f1-b05b63a625a4",
       "name": "Google Gemini Chat Model",
@@ -65,7 +65,7 @@
       "typeVersion": 4.4,
       "position": [
         480,
-        224
+        -176
       ],
       "id": "0d9533d4-575e-4ad6-b5b6-8152f2e87f00",
       "name": "xpsystems.eu status-api service-list"
@@ -81,7 +81,7 @@
       "typeVersion": 4.4,
       "position": [
         608,
-        224
+        -176
       ],
       "id": "ec4caa33-79bb-4d98-8228-d54c41f454fa",
       "name": "xpsystems.eu status-api over-all"
@@ -94,8 +94,8 @@
       "type": "@n8n/n8n-nodes-langchain.chat",
       "typeVersion": 1.3,
       "position": [
-        2768,
-        0
+        2480,
+        -400
       ],
       "id": "ef6f3498-acd3-4ea0-9cf3-2e123989a3ca",
       "name": "AI reply",
@@ -111,7 +111,7 @@
       "typeVersion": 1,
       "position": [
         736,
-        224
+        -176
       ],
       "id": "98c79df2-4ee6-4704-b38d-367cfc82a8b1",
       "name": "Download a file in Nextcloud",
@@ -131,7 +131,7 @@
       "typeVersion": 1,
       "position": [
         864,
-        224
+        -176
       ],
       "id": "5c0e7f49-a5fb-4b6f-97cc-624b3626292b",
       "name": "Upload a file in Nextcloud",
@@ -152,7 +152,7 @@
       "typeVersion": 1,
       "position": [
         992,
-        224
+        -176
       ],
       "id": "f495ba24-3f8f-4d49-a482-3025efefa9a5",
       "name": "List a folder in Nextcloud",
@@ -172,7 +172,7 @@
       "typeVersion": 1,
       "position": [
         1120,
-        224
+        -176
       ],
       "id": "8b9e0318-d0d8-4bda-8cc4-45d989d71d9a",
       "name": "Create a folder in Nextcloud",
@@ -207,46 +207,10 @@
       "typeVersion": 1.1,
       "position": [
         1248,
-        224
+        -176
       ],
       "id": "bb24e480-589a-47da-bb09-4364bfdc4c05",
       "name": "Edit an image in Google Gemini",
-      "credentials": {
-        "googlePalmApi": {
-          "id": "Ksn0wfry2GS82ZtG",
-          "name": "Google Gemini(PaLM) Api account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "text": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Prompt__User_Message_', ``, 'string') }}",
-        "needsFallback": true,
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.agentTool",
-      "typeVersion": 3,
-      "position": [
-        1376,
-        224
-      ],
-      "id": "ae97adcf-48bd-43c4-8115-b5216a1681fb",
-      "name": "AI Agent Tool",
-      "notesInFlow": false
-    },
-    {
-      "parameters": {
-        "modelName": "models/gemini-3.1-flash-lite-preview",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
-      "typeVersion": 1,
-      "position": [
-        1136,
-        432
-      ],
-      "id": "a144b228-5611-4504-976a-d54df8c21175",
-      "name": "Google Gemini Chat Model1",
       "credentials": {
         "googlePalmApi": {
           "id": "Ksn0wfry2GS82ZtG",
@@ -263,7 +227,7 @@
       "typeVersion": 1,
       "position": [
         352,
-        224
+        -176
       ],
       "id": "8cd75aca-ff21-4c0d-bde5-fecd20cd4660",
       "name": "Google Gemini Chat Model2",
@@ -276,115 +240,13 @@
     },
     {
       "parameters": {
-        "modelName": "models/gemini-flash-lite-latest",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
-      "typeVersion": 1,
-      "position": [
-        1264,
-        432
-      ],
-      "id": "f23da92d-01d5-4b7d-a313-d874984f2695",
-      "name": "Google Gemini Chat Model3",
-      "credentials": {
-        "googlePalmApi": {
-          "id": "Ksn0wfry2GS82ZtG",
-          "name": "Google Gemini(PaLM) Api account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "download",
-        "path": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('File_Path', ``, 'string') }}",
-        "binaryPropertyName": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Put_Output_File_in_Field', ``, 'string') }}"
-      },
-      "type": "n8n-nodes-base.nextCloudTool",
-      "typeVersion": 1,
-      "position": [
-        1392,
-        432
-      ],
-      "id": "94479151-644d-4b09-a19a-0f3fd24f4a5c",
-      "name": "Download a file in Nextcloud1",
-      "credentials": {
-        "nextCloudApi": {
-          "id": "B9JRRuackLSYf8ae",
-          "name": "NextCloud account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "path": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('File_Path', ``, 'string') }}",
-        "binaryDataUpload": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Binary_File', ``, 'boolean') }}"
-      },
-      "type": "n8n-nodes-base.nextCloudTool",
-      "typeVersion": 1,
-      "position": [
-        1520,
-        432
-      ],
-      "id": "92858000-c868-4511-abe8-7b9df66d1cc5",
-      "name": "Upload a file in Nextcloud1",
-      "credentials": {
-        "nextCloudApi": {
-          "id": "B9JRRuackLSYf8ae",
-          "name": "NextCloud account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "resource": "folder",
-        "operation": "list",
-        "path": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Folder_Path', ``, 'string') }}"
-      },
-      "type": "n8n-nodes-base.nextCloudTool",
-      "typeVersion": 1,
-      "position": [
-        1648,
-        432
-      ],
-      "id": "89847023-92ac-422b-b251-8b0f4ffccade",
-      "name": "List a folder in Nextcloud1",
-      "credentials": {
-        "nextCloudApi": {
-          "id": "B9JRRuackLSYf8ae",
-          "name": "NextCloud account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "resource": "folder",
-        "path": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Folder_Path', ``, 'string') }}"
-      },
-      "type": "n8n-nodes-base.nextCloudTool",
-      "typeVersion": 1,
-      "position": [
-        1776,
-        432
-      ],
-      "id": "d3aa4cfc-9f15-45e1-be4c-671095302012",
-      "name": "Create a folder in Nextcloud1",
-      "credentials": {
-        "nextCloudApi": {
-          "id": "B9JRRuackLSYf8ae",
-          "name": "NextCloud account"
-        }
-      }
-    },
-    {
-      "parameters": {
         "id": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Track_ID', ``, 'string') }}"
       },
       "type": "n8n-nodes-base.spotifyTool",
       "typeVersion": 1,
       "position": [
-        1664,
-        224
+        1376,
+        -176
       ],
       "id": "215a480d-9117-4550-9edb-36727db719a7",
       "name": "Add a song to a queue in Spotify",
@@ -402,8 +264,8 @@
       "type": "n8n-nodes-base.spotifyTool",
       "typeVersion": 1,
       "position": [
-        1792,
-        224
+        1504,
+        -176
       ],
       "id": "993bb0c9-a8a4-4abb-b5ac-2642d910d5e9",
       "name": "Get the currently playing track in Spotify",
@@ -421,8 +283,8 @@
       "type": "n8n-nodes-base.spotifyTool",
       "typeVersion": 1,
       "position": [
-        1920,
-        224
+        1632,
+        -176
       ],
       "id": "c7634f59-4351-4653-adfb-7a9a241bf210",
       "name": "Skip to the next track in Spotify",
@@ -441,8 +303,8 @@
       "type": "n8n-nodes-base.spotifyTool",
       "typeVersion": 1,
       "position": [
-        2048,
-        224
+        1760,
+        -176
       ],
       "id": "9531a05c-1d14-47ec-b7dd-3b7e31959b11",
       "name": "Set volume on the player in Spotify",
@@ -461,8 +323,8 @@
       "type": "n8n-nodes-base.spotifyTool",
       "typeVersion": 1,
       "position": [
-        2176,
-        224
+        1888,
+        -176
       ],
       "id": "e33a1133-297d-43b3-8499-733cdb495fa7",
       "name": "Get the recently played tracks in Spotify",
@@ -481,8 +343,8 @@
       "type": "n8n-nodes-base.spotifyTool",
       "typeVersion": 1,
       "position": [
-        2304,
-        224
+        2016,
+        -176
       ],
       "id": "ebd5a810-3ff5-4df5-84e5-554fdd5b63d7",
       "name": "Start music on the player in Spotify",
@@ -500,8 +362,8 @@
       "type": "n8n-nodes-base.spotifyTool",
       "typeVersion": 1,
       "position": [
-        2432,
-        224
+        2144,
+        -176
       ],
       "id": "88d8d832-2e1d-4bab-93c2-24f67f791f10",
       "name": "Resume the player in Spotify",
@@ -519,8 +381,8 @@
       "type": "n8n-nodes-base.spotifyTool",
       "typeVersion": 1,
       "position": [
-        2560,
-        224
+        2272,
+        -176
       ],
       "id": "e21426d6-19b3-49b8-944c-636b6a2c10d3",
       "name": "Pause the player in Spotify",
@@ -644,28 +506,6 @@
         ]
       ]
     },
-    "AI Agent Tool": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Google Gemini Chat Model1": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "AI Agent Tool",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Google Gemini Chat Model2": {
       "ai_languageModel": [
         [
@@ -673,61 +513,6 @@
             "node": "AI Agent",
             "type": "ai_languageModel",
             "index": 1
-          }
-        ]
-      ]
-    },
-    "Google Gemini Chat Model3": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "AI Agent Tool",
-            "type": "ai_languageModel",
-            "index": 1
-          }
-        ]
-      ]
-    },
-    "Download a file in Nextcloud1": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent Tool",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Upload a file in Nextcloud1": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent Tool",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "List a folder in Nextcloud1": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent Tool",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Create a folder in Nextcloud1": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent Tool",
-            "type": "ai_tool",
-            "index": 0
           }
         ]
       ]
@@ -826,7 +611,7 @@
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "4dbf0cbb-9aee-43ca-bf5f-0afd8d8aa36e",
+  "versionId": "e119cc75-7d97-43c2-b45e-88efe56263c7",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "61322c84f3560e86dcff9fd4d8ad4261e71f6f78fd6fcde52f90558cbc1f2300"

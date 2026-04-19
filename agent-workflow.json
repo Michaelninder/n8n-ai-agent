@@ -40,7 +40,7 @@
       "typeVersion": 1,
       "position": [
         224,
-        -176
+        32
       ],
       "id": "fc506bc1-41e5-4277-86f1-b05b63a625a4",
       "name": "Google Gemini Chat Model",
@@ -64,7 +64,7 @@
       "type": "n8n-nodes-base.httpRequestTool",
       "typeVersion": 4.4,
       "position": [
-        480,
+        352,
         -176
       ],
       "id": "0d9533d4-575e-4ad6-b5b6-8152f2e87f00",
@@ -80,7 +80,7 @@
       "type": "n8n-nodes-base.httpRequestTool",
       "typeVersion": 4.4,
       "position": [
-        608,
+        480,
         -176
       ],
       "id": "ec4caa33-79bb-4d98-8228-d54c41f454fa",
@@ -94,7 +94,7 @@
       "type": "@n8n/n8n-nodes-langchain.chat",
       "typeVersion": 1.3,
       "position": [
-        2480,
+        2768,
         -400
       ],
       "id": "ef6f3498-acd3-4ea0-9cf3-2e123989a3ca",
@@ -110,7 +110,7 @@
       "type": "n8n-nodes-base.nextCloudTool",
       "typeVersion": 1,
       "position": [
-        736,
+        608,
         -176
       ],
       "id": "98c79df2-4ee6-4704-b38d-367cfc82a8b1",
@@ -125,12 +125,13 @@
     {
       "parameters": {
         "path": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('File_Path', ``, 'string') }}",
-        "binaryDataUpload": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Binary_File', ``, 'boolean') }}"
+        "binaryDataUpload": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Binary_File', ``, 'boolean') }}",
+        "binaryPropertyName": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Input_Binary_Field', ``, 'string') }}"
       },
       "type": "n8n-nodes-base.nextCloudTool",
       "typeVersion": 1,
       "position": [
-        864,
+        736,
         -176
       ],
       "id": "5c0e7f49-a5fb-4b6f-97cc-624b3626292b",
@@ -151,7 +152,7 @@
       "type": "n8n-nodes-base.nextCloudTool",
       "typeVersion": 1,
       "position": [
-        992,
+        864,
         -176
       ],
       "id": "f495ba24-3f8f-4d49-a482-3025efefa9a5",
@@ -171,7 +172,7 @@
       "type": "n8n-nodes-base.nextCloudTool",
       "typeVersion": 1,
       "position": [
-        1120,
+        992,
         -176
       ],
       "id": "8b9e0318-d0d8-4bda-8cc4-45d989d71d9a",
@@ -189,15 +190,15 @@
         "operation": "edit",
         "modelId": {
           "__rl": true,
-          "value": "models/gemini-2.5-flash-image",
+          "value": "models/gemini-3-pro-image-preview",
           "mode": "list",
-          "cachedResultName": "models/gemini-2.5-flash-image (Nano Banana)"
+          "cachedResultName": "models/gemini-3-pro-image-preview (Nano Banana Pro)"
         },
         "prompt": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Prompt', ``, 'string') }}",
         "images": {
           "values": [
             {
-              "binaryPropertyName": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('values0_Binary_Field_Name', ``, 'string') }}"
+              "binaryPropertyName": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('values0_Binary_Field_Name', `The field-name of the image to edit`, 'string') }}"
             }
           ]
         },
@@ -206,7 +207,7 @@
       "type": "@n8n/n8n-nodes-langchain.googleGeminiTool",
       "typeVersion": 1.1,
       "position": [
-        1248,
+        1120,
         -176
       ],
       "id": "bb24e480-589a-47da-bb09-4364bfdc4c05",
@@ -226,8 +227,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        352,
-        -176
+        1372,
+        32
       ],
       "id": "8cd75aca-ff21-4c0d-bde5-fecd20cd4660",
       "name": "Google Gemini Chat Model2",
@@ -245,7 +246,7 @@
       "type": "n8n-nodes-base.spotifyTool",
       "typeVersion": 1,
       "position": [
-        1376,
+        1248,
         -176
       ],
       "id": "215a480d-9117-4550-9edb-36727db719a7",
@@ -264,7 +265,7 @@
       "type": "n8n-nodes-base.spotifyTool",
       "typeVersion": 1,
       "position": [
-        1504,
+        1376,
         -176
       ],
       "id": "993bb0c9-a8a4-4abb-b5ac-2642d910d5e9",
@@ -283,7 +284,7 @@
       "type": "n8n-nodes-base.spotifyTool",
       "typeVersion": 1,
       "position": [
-        1632,
+        1504,
         -176
       ],
       "id": "c7634f59-4351-4653-adfb-7a9a241bf210",
@@ -303,7 +304,7 @@
       "type": "n8n-nodes-base.spotifyTool",
       "typeVersion": 1,
       "position": [
-        1760,
+        1632,
         -176
       ],
       "id": "9531a05c-1d14-47ec-b7dd-3b7e31959b11",
@@ -323,7 +324,7 @@
       "type": "n8n-nodes-base.spotifyTool",
       "typeVersion": 1,
       "position": [
-        1888,
+        1760,
         -176
       ],
       "id": "e33a1133-297d-43b3-8499-733cdb495fa7",
@@ -343,7 +344,7 @@
       "type": "n8n-nodes-base.spotifyTool",
       "typeVersion": 1,
       "position": [
-        2016,
+        1888,
         -176
       ],
       "id": "ebd5a810-3ff5-4df5-84e5-554fdd5b63d7",
@@ -362,7 +363,7 @@
       "type": "n8n-nodes-base.spotifyTool",
       "typeVersion": 1,
       "position": [
-        2144,
+        2016,
         -176
       ],
       "id": "88d8d832-2e1d-4bab-93c2-24f67f791f10",
@@ -381,7 +382,7 @@
       "type": "n8n-nodes-base.spotifyTool",
       "typeVersion": 1,
       "position": [
-        2272,
+        2144,
         -176
       ],
       "id": "e21426d6-19b3-49b8-944c-636b6a2c10d3",
@@ -392,6 +393,48 @@
           "name": "Spotify account"
         }
       }
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-3.1-flash-image-preview",
+          "mode": "list",
+          "cachedResultName": "models/gemini-3.1-flash-image-preview"
+        },
+        "prompt": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Prompt', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGeminiTool",
+      "typeVersion": 1.1,
+      "position": [
+        2272,
+        -176
+      ],
+      "id": "6ebee57a-b18a-426c-962d-bc26c7bc1f9b",
+      "name": "Generate an image in Google Gemini",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Ksn0wfry2GS82ZtG",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "text": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Prompt__User_Message_', ``, 'string') }}",
+        "needsFallback": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agentTool",
+      "typeVersion": 3,
+      "position": [
+        2400,
+        -176
+      ],
+      "id": "9dc9cd83-1d17-4eab-95e5-1a4b86c10763",
+      "name": "AI Agent Tool"
     }
   ],
   "pinData": {},
@@ -412,6 +455,11 @@
         [
           {
             "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "AI Agent Tool",
             "type": "ai_languageModel",
             "index": 0
           }
@@ -513,6 +561,11 @@
             "node": "AI Agent",
             "type": "ai_languageModel",
             "index": 1
+          },
+          {
+            "node": "AI Agent Tool",
+            "type": "ai_languageModel",
+            "index": 1
           }
         ]
       ]
@@ -604,6 +657,28 @@
           }
         ]
       ]
+    },
+    "Generate an image in Google Gemini": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
@@ -611,7 +686,7 @@
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "e119cc75-7d97-43c2-b45e-88efe56263c7",
+  "versionId": "2df74540-d479-49a6-a397-31da9e77a71e",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "61322c84f3560e86dcff9fd4d8ad4261e71f6f78fd6fcde52f90558cbc1f2300"

@@ -1,5 +1,5 @@
 {
-  "name": "agent-workflow-enhanced",
+  "name": "agent-workflow-enhanced-v2",
   "nodes": [
     {
       "parameters": {
@@ -10,10 +10,10 @@
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.4,
       "position": [
-        2032,
-        -368
+        3456,
+        16
       ],
-      "id": "f277f87e-a4ad-4262-9d50-82b97c981534",
+      "id": "fddd5e07-113c-45f8-8fcd-698dbc4da424",
       "name": "When chat message received",
       "webhookId": "cd6baac2-c985-4e29-9485-918ba38e3c91"
     },
@@ -25,10 +25,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        2256,
-        -352
+        3680,
+        32
       ],
-      "id": "87474a5b-4e25-4d08-8f2a-83523eae79e9",
+      "id": "a7eef0f4-5d89-409b-b6e1-172f659d0ca6",
       "name": "Supervisor LLM",
       "credentials": {
         "googlePalmApi": {
@@ -47,10 +47,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        2352,
-        -576
+        3776,
+        -208
       ],
-      "id": "f4156325-5472-4c0e-923c-a6762fdb480a",
+      "id": "fff12a24-92d4-4dff-8d3d-09b9b4e68543",
       "name": "Supervisor Agent"
     },
     {
@@ -61,10 +61,10 @@
       "type": "@n8n/n8n-nodes-langchain.agentTool",
       "typeVersion": 3,
       "position": [
-        2512,
-        -352
+        3936,
+        32
       ],
-      "id": "b7ed520c-a28d-4911-9ec2-bd34d2fa2f51",
+      "id": "541167c8-5b2d-401d-a67a-f786f455a0d1",
       "name": "Cloud Agent"
     },
     {
@@ -75,10 +75,10 @@
       "type": "@n8n/n8n-nodes-langchain.agentTool",
       "typeVersion": 3,
       "position": [
-        3040,
-        -352
+        4464,
+        32
       ],
-      "id": "a915deb7-028b-4ee3-a757-9a72546a0477",
+      "id": "4f8683ec-13b3-4dd9-b519-172c8c61169b",
       "name": "Music Agent"
     },
     {
@@ -89,10 +89,10 @@
       "type": "@n8n/n8n-nodes-langchain.agentTool",
       "typeVersion": 3,
       "position": [
-        3792,
-        -352
+        5216,
+        32
       ],
-      "id": "b49f8555-4db7-495e-a7dc-f950dccecdb8",
+      "id": "d7a5101e-6bab-4261-8082-844cbb7188a0",
       "name": "Status Agent"
     },
     {
@@ -103,10 +103,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        2336,
-        -144
+        3760,
+        240
       ],
-      "id": "c0606526-eeb4-48b8-b2e9-9041ea4b0499",
+      "id": "73f8794f-09c4-4040-96eb-3a644edf9f8b",
       "name": "Worker LLM",
       "credentials": {
         "googlePalmApi": {
@@ -160,18 +160,17 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.4,
       "position": [
-        2896,
-        -576
+        4320,
+        -208
       ],
-      "id": "9434fb15-8ca5-42d8-820d-6c243266a4cd",
+      "id": "54ae256e-e1a5-4254-8e9a-45f22d30fc75",
       "name": "Postgres Logging",
       "credentials": {
         "postgres": {
           "id": "2uCOnAgFigoaIsxh",
           "name": "Postgres account"
         }
-      },
-      "notes": "Logs the chat to your Database"
+      }
     },
     {
       "parameters": {
@@ -181,10 +180,10 @@
       "type": "@n8n/n8n-nodes-langchain.chat",
       "typeVersion": 1.3,
       "position": [
-        4288,
-        -576
+        5712,
+        -208
       ],
-      "id": "fd3a7a3b-bc08-44b7-8f03-db645d123c43",
+      "id": "c2c9e2c8-5920-42d1-ae95-32192c7c7841",
       "name": "AI reply",
       "webhookId": "c34bb292-a0e7-41dd-9274-9e33ebcb093f"
     },
@@ -198,10 +197,10 @@
       "type": "n8n-nodes-base.httpRequestTool",
       "typeVersion": 4.4,
       "position": [
-        3872,
-        -144
+        5296,
+        240
       ],
-      "id": "6f5a6d2f-d82f-4d9f-8961-18ea70b30883",
+      "id": "d955a0e9-7487-4adf-a3d1-1068943cf4ed",
       "name": "xpsystems.eu status-api service-list"
     },
     {
@@ -214,10 +213,10 @@
       "type": "n8n-nodes-base.httpRequestTool",
       "typeVersion": 4.4,
       "position": [
-        4000,
-        -144
+        5424,
+        240
       ],
-      "id": "40c4fb66-e447-498e-9cd1-056c9c9dce2f",
+      "id": "462d31f3-07db-40e7-8fc5-7981564afa68",
       "name": "xpsystems.eu status-api over-all"
     },
     {
@@ -228,10 +227,10 @@
       "type": "n8n-nodes-base.nextCloudTool",
       "typeVersion": 1,
       "position": [
-        2464,
-        -144
+        3888,
+        240
       ],
-      "id": "9ef98af5-8aa3-4819-b6ac-fd9c56c22995",
+      "id": "c0b6cc12-510b-4ac8-8ee2-540b882c7e19",
       "name": "Download File NC",
       "credentials": {
         "nextCloudApi": {
@@ -247,10 +246,10 @@
       "type": "n8n-nodes-base.nextCloudTool",
       "typeVersion": 1,
       "position": [
-        2592,
-        -144
+        4016,
+        240
       ],
-      "id": "9166d683-e6ed-4a69-b802-d5fd42fbd569",
+      "id": "d292adaa-a82c-45a4-965a-4b23ec3cb1a0",
       "name": "Upload File NC",
       "credentials": {
         "nextCloudApi": {
@@ -268,10 +267,10 @@
       "type": "n8n-nodes-base.nextCloudTool",
       "typeVersion": 1,
       "position": [
-        2720,
-        -144
+        4144,
+        240
       ],
-      "id": "21ba35fa-8ae7-40a2-949e-d44b81daa4bc",
+      "id": "0f6901a0-1c3b-46c1-9c6b-40a2bd6aec86",
       "name": "List Folder NC",
       "credentials": {
         "nextCloudApi": {
@@ -287,10 +286,10 @@
       "type": "n8n-nodes-base.spotifyTool",
       "typeVersion": 1,
       "position": [
-        3104,
-        -144
+        4528,
+        240
       ],
-      "id": "a7fd9fc6-b160-4970-94e6-1329a5e5b54d",
+      "id": "05b5b3f2-1462-4902-87fc-42d90c83be96",
       "name": "Get Playing Spotify",
       "credentials": {
         "spotifyOAuth2Api": {
@@ -306,10 +305,10 @@
       "type": "n8n-nodes-base.spotifyTool",
       "typeVersion": 1,
       "position": [
-        3232,
-        -144
+        4656,
+        240
       ],
-      "id": "33627dd3-0000-49b5-b3eb-9d23cd718f07",
+      "id": "5130c30a-f203-4972-8232-b1f769d96d1f",
       "name": "Skip Track Spotify",
       "credentials": {
         "spotifyOAuth2Api": {
@@ -326,10 +325,10 @@
       "type": "n8n-nodes-base.spotifyTool",
       "typeVersion": 1,
       "position": [
-        3360,
-        -144
+        4784,
+        240
       ],
-      "id": "43cace41-2939-467c-9b5d-2a974258f03a",
+      "id": "861fe848-7044-4202-b059-e6f460413f85",
       "name": "Set Volume Spotify",
       "credentials": {
         "spotifyOAuth2Api": {
@@ -351,10 +350,10 @@
       "type": "@n8n/n8n-nodes-langchain.googleGeminiTool",
       "typeVersion": 1.1,
       "position": [
-        4080,
-        -352
+        5504,
+        32
       ],
-      "id": "f5832e72-228d-489c-8b3c-cbbd8431b358",
+      "id": "c5e83e6d-be05-4b7c-9f20-1be411b8c862",
       "name": "Generate Image Tool",
       "credentials": {
         "googlePalmApi": {
@@ -371,10 +370,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        2384,
-        -352
+        3808,
+        32
       ],
-      "id": "bd1b51fd-9a75-43f8-aee1-d3180691705e",
+      "id": "07d66f31-d26b-4261-a19f-db3916cb4ea6",
       "name": "FALLBACK Supervisor LLM",
       "credentials": {
         "googlePalmApi": {
@@ -392,10 +391,10 @@
       "type": "n8n-nodes-base.nextCloudTool",
       "typeVersion": 1,
       "position": [
-        2848,
-        -144
+        4272,
+        240
       ],
-      "id": "2b840de6-030c-4ee0-b0ad-1c46a1d64af3",
+      "id": "18606ccd-1637-4b9f-9d78-451f6433a784",
       "name": "Move File NC",
       "credentials": {
         "nextCloudApi": {
@@ -412,10 +411,10 @@
       "type": "n8n-nodes-base.nextCloudTool",
       "typeVersion": 1,
       "position": [
-        2976,
-        -144
+        4400,
+        240
       ],
-      "id": "6cfa1002-fd05-4825-b622-5de4d7e93c34",
+      "id": "c4fc3f44-9e5e-4ed4-8dc2-2b7d29dcf895",
       "name": "Create Folder NC",
       "credentials": {
         "nextCloudApi": {
@@ -431,10 +430,10 @@
       "type": "n8n-nodes-base.spotifyTool",
       "typeVersion": 1,
       "position": [
-        3488,
-        -144
+        4912,
+        240
       ],
-      "id": "5120abc8-86d3-41bd-b0f5-7d4458b54a70",
+      "id": "7d4c85c8-f96d-4030-950a-e5bf57fc2c15",
       "name": "Add Song to Queue Spotify",
       "credentials": {
         "spotifyOAuth2Api": {
@@ -455,10 +454,10 @@
       "type": "n8n-nodes-base.spotifyTool",
       "typeVersion": 1,
       "position": [
-        3616,
-        -144
+        5040,
+        240
       ],
-      "id": "03df5334-f9d4-4158-98c2-6e036c045fa1",
+      "id": "a5d686db-76a5-4485-ae0e-e46cb4363d43",
       "name": "Search for Track Spotify",
       "credentials": {
         "spotifyOAuth2Api": {
@@ -475,10 +474,10 @@
       "type": "n8n-nodes-base.spotifyTool",
       "typeVersion": 1,
       "position": [
-        3744,
-        -144
+        5168,
+        240
       ],
-      "id": "3180948c-bfbf-4e99-b3b5-d84ef339ea58",
+      "id": "824d1cc4-62cc-4d12-8c18-b88ecc658a2e",
       "name": "Start Playing Something Spotify",
       "credentials": {
         "spotifyOAuth2Api": {
@@ -499,10 +498,10 @@
       "type": "n8n-nodes-base.telegramTrigger",
       "typeVersion": 1.2,
       "position": [
-        2000,
-        -576
+        3424,
+        -432
       ],
-      "id": "d687844b-100f-44a2-9fb5-d3dab9e6da33",
+      "id": "e19cc0d8-f6e6-47e3-9273-0f206c759c69",
       "name": "Telegram Trigger",
       "webhookId": "ceb35920-3205-42e0-a136-7e40e1e7dd1d",
       "credentials": {
@@ -524,10 +523,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        2352,
-        -800
+        3776,
+        -432
       ],
-      "id": "d24107f7-52f3-4d2d-8bd6-0daec46d23a4",
+      "id": "74ccc45c-2cd9-4c4b-9e3c-096e8ab69362",
       "name": "Supervisor Agent1"
     },
     {
@@ -541,10 +540,10 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2704,
-        -800
+        4128,
+        -432
       ],
-      "id": "abfa49b6-3ebd-4e40-9483-5f1a1aca6e80",
+      "id": "57c26001-f4ff-4c19-b6ef-0eeee4b42c60",
       "name": "Send a text message",
       "webhookId": "9b6479d5-0f7e-427b-8d48-50ea756f3b04",
       "credentials": {
@@ -553,6 +552,82 @@
           "name": "Telegram account"
         }
       }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        3424,
+        384
+      ],
+      "id": "1ce041c8-163b-43e3-b0f6-ff60c91eb4c4",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "chatId": "7594236507",
+        "text": "=⚠️ *Workflow Error*\n\nWorkflow: {{ $json.workflow.name }}\nNode: {{ $json.execution.error.node.name }}\nError: {{ $json.execution.error.message }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "Markdown"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3680,
+        384
+      ],
+      "id": "a1be6af9-9af9-4de9-b5eb-b665387af62d",
+      "name": "Send Error Alert",
+      "webhookId": "35a5a85c-20a0-4d3d-bd19-83e113dcb9cc",
+      "credentials": {
+        "telegramApi": {
+          "id": "orqlUOQjKdwDmoEn",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "contextWindowLength": 8
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.2,
+      "position": [
+        3776,
+        176
+      ],
+      "id": "f76e83a4-d66b-496f-b944-978c6dd64b3b",
+      "name": "Memory Web"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.message.chat.id }}",
+        "contextWindowLength": 8
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.2,
+      "position": [
+        3776,
+        -608
+      ],
+      "id": "351dd527-ad05-47a7-83a9-265eaf7b1fd9",
+      "name": "Memory Telegram"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        4032,
+        -128
+      ],
+      "id": "bfedbe70-7e1d-4ffa-8019-8c582522debf",
+      "name": "Calculator"
     }
   ],
   "pinData": {},
@@ -759,15 +834,9 @@
             "node": "AI reply",
             "type": "main",
             "index": 0
-          }
-        ]
-      ]
-    },
-    "Postgres Logging": {
-      "main": [
-        [
+          },
           {
-            "node": "AI reply",
+            "node": "Postgres Logging",
             "type": "main",
             "index": 0
           }
@@ -866,6 +935,55 @@
           }
         ]
       ]
+    },
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Send Error Alert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Memory Web": {
+      "ai_memory": [
+        [
+          {
+            "node": "Supervisor Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Memory Telegram": {
+      "ai_memory": [
+        [
+          {
+            "node": "Supervisor Agent1",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculator": {
+      "ai_tool": [
+        [
+          {
+            "node": "Supervisor Agent",
+            "type": "ai_tool",
+            "index": 0
+          },
+          {
+            "node": "Supervisor Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
@@ -873,7 +991,7 @@
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "6f0e6d34-bcd9-4f98-b2af-7ff275252470",
+  "versionId": "44062758-e961-4947-bcbb-6349b9a38f38",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "61322c84f3560e86dcff9fd4d8ad4261e71f6f78fd6fcde52f90558cbc1f2300"

@@ -350,8 +350,8 @@
       "type": "@n8n/n8n-nodes-langchain.googleGeminiTool",
       "typeVersion": 1.1,
       "position": [
-        5504,
-        32
+        3440,
+        -176
       ],
       "id": "c5e83e6d-be05-4b7c-9f20-1be411b8c862",
       "name": "Generate Image Tool",
@@ -527,7 +527,8 @@
         -432
       ],
       "id": "74ccc45c-2cd9-4c4b-9e3c-096e8ab69362",
-      "name": "Supervisor Agent1"
+      "name": "Supervisor Agent1",
+      "retryOnFail": true
     },
     {
       "parameters": {
@@ -623,7 +624,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolCalculator",
       "typeVersion": 1,
       "position": [
-        4032,
+        4064,
         -128
       ],
       "id": "bfedbe70-7e1d-4ffa-8019-8c582522debf",
@@ -733,6 +734,11 @@
         [
           {
             "node": "Supervisor Agent",
+            "type": "ai_tool",
+            "index": 0
+          },
+          {
+            "node": "Supervisor Agent1",
             "type": "ai_tool",
             "index": 0
           }
@@ -986,12 +992,12 @@
       ]
     }
   },
-  "active": false,
+  "active": true,
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "44062758-e961-4947-bcbb-6349b9a38f38",
+  "versionId": "33764a47-a343-42e1-a074-824db1110ab3",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "61322c84f3560e86dcff9fd4d8ad4261e71f6f78fd6fcde52f90558cbc1f2300"

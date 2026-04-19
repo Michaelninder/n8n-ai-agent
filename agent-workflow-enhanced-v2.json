@@ -1,0 +1,1007 @@
+{
+  "name": "agent-workflow-enhanced-v2",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {
+          "responseMode": "responseNodes"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        3456,
+        16
+      ],
+      "id": "fddd5e07-113c-45f8-8fcd-698dbc4da424",
+      "name": "When chat message received",
+      "webhookId": "cd6baac2-c985-4e29-9485-918ba38e3c91"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-3.1-flash-lite-preview",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        3680,
+        32
+      ],
+      "id": "a7eef0f4-5d89-409b-b6e1-172f659d0ca6",
+      "name": "Supervisor LLM",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Ksn0wfry2GS82ZtG",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "needsFallback": true,
+        "options": {
+          "systemMessage": "You are the primary Supervisor Agent. Your job is to route user requests to the appropriate specialized sub-agent (Cloud, Music, or Status) or handle general conversation."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        3776,
+        -208
+      ],
+      "id": "fff12a24-92d4-4dff-8d3d-09b9b4e68543",
+      "name": "Supervisor Agent"
+    },
+    {
+      "parameters": {
+        "text": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Prompt__User_Message_', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agentTool",
+      "typeVersion": 3,
+      "position": [
+        3936,
+        32
+      ],
+      "id": "541167c8-5b2d-401d-a67a-f786f455a0d1",
+      "name": "Cloud Agent"
+    },
+    {
+      "parameters": {
+        "text": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Prompt__User_Message_', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agentTool",
+      "typeVersion": 3,
+      "position": [
+        4464,
+        32
+      ],
+      "id": "4f8683ec-13b3-4dd9-b519-172c8c61169b",
+      "name": "Music Agent"
+    },
+    {
+      "parameters": {
+        "text": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Prompt__User_Message_', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agentTool",
+      "typeVersion": 3,
+      "position": [
+        5216,
+        32
+      ],
+      "id": "d7a5101e-6bab-4261-8082-844cbb7188a0",
+      "name": "Status Agent"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-flash-lite-latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        3760,
+        240
+      ],
+      "id": "73f8794f-09c4-4040-96eb-3a644edf9f8b",
+      "name": "Worker LLM",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Ksn0wfry2GS82ZtG",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": "public",
+        "table": "chat_logs",
+        "columns": {
+          "0": "u",
+          "1": "s",
+          "2": "e",
+          "3": "r",
+          "4": "_",
+          "5": "m",
+          "6": "e",
+          "7": "s",
+          "8": "s",
+          "9": "a",
+          "10": "g",
+          "11": "e",
+          "12": ",",
+          "13": " ",
+          "14": "a",
+          "15": "g",
+          "16": "e",
+          "17": "n",
+          "18": "t",
+          "19": "_",
+          "20": "r",
+          "21": "e",
+          "22": "s",
+          "23": "p",
+          "24": "o",
+          "25": "n",
+          "26": "s",
+          "27": "e",
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.4,
+      "position": [
+        4320,
+        -208
+      ],
+      "id": "54ae256e-e1a5-4254-8e9a-45f22d30fc75",
+      "name": "Postgres Logging",
+      "credentials": {
+        "postgres": {
+          "id": "2uCOnAgFigoaIsxh",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "message": "={{ $json.output }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chat",
+      "typeVersion": 1.3,
+      "position": [
+        5712,
+        -208
+      ],
+      "id": "c2c9e2c8-5920-42d1-ae95-32192c7c7841",
+      "name": "AI reply",
+      "webhookId": "c34bb292-a0e7-41dd-9274-9e33ebcb093f"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Lists all xpsystems.eu status-services",
+        "url": "https://status.xpsystems.eu/api/services",
+        "options": {},
+        "optimizeResponse": true
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.4,
+      "position": [
+        5296,
+        240
+      ],
+      "id": "d955a0e9-7487-4adf-a3d1-1068943cf4ed",
+      "name": "xpsystems.eu status-api service-list"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Checks over-all xpsystems.eu status",
+        "url": "https://status.xpsystems.eu/api/status",
+        "options": {},
+        "optimizeResponse": true
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.4,
+      "position": [
+        5424,
+        240
+      ],
+      "id": "462d31f3-07db-40e7-8fc5-7981564afa68",
+      "name": "xpsystems.eu status-api over-all"
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "path": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('File_Path', ``, 'string') }}"
+      },
+      "type": "n8n-nodes-base.nextCloudTool",
+      "typeVersion": 1,
+      "position": [
+        3888,
+        240
+      ],
+      "id": "c0b6cc12-510b-4ac8-8ee2-540b882c7e19",
+      "name": "Download File NC",
+      "credentials": {
+        "nextCloudApi": {
+          "id": "B9JRRuackLSYf8ae",
+          "name": "NextCloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('File_Path', ``, 'string') }}"
+      },
+      "type": "n8n-nodes-base.nextCloudTool",
+      "typeVersion": 1,
+      "position": [
+        4016,
+        240
+      ],
+      "id": "d292adaa-a82c-45a4-965a-4b23ec3cb1a0",
+      "name": "Upload File NC",
+      "credentials": {
+        "nextCloudApi": {
+          "id": "B9JRRuackLSYf8ae",
+          "name": "NextCloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "operation": "list",
+        "path": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Folder_Path', ``, 'string') }}"
+      },
+      "type": "n8n-nodes-base.nextCloudTool",
+      "typeVersion": 1,
+      "position": [
+        4144,
+        240
+      ],
+      "id": "0f6901a0-1c3b-46c1-9c6b-40a2bd6aec86",
+      "name": "List Folder NC",
+      "credentials": {
+        "nextCloudApi": {
+          "id": "B9JRRuackLSYf8ae",
+          "name": "NextCloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "currentlyPlaying"
+      },
+      "type": "n8n-nodes-base.spotifyTool",
+      "typeVersion": 1,
+      "position": [
+        4528,
+        240
+      ],
+      "id": "05b5b3f2-1462-4902-87fc-42d90c83be96",
+      "name": "Get Playing Spotify",
+      "credentials": {
+        "spotifyOAuth2Api": {
+          "id": "JieBlDE26DjNOWs4",
+          "name": "Spotify account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "nextSong"
+      },
+      "type": "n8n-nodes-base.spotifyTool",
+      "typeVersion": 1,
+      "position": [
+        4656,
+        240
+      ],
+      "id": "5130c30a-f203-4972-8232-b1f769d96d1f",
+      "name": "Skip Track Spotify",
+      "credentials": {
+        "spotifyOAuth2Api": {
+          "id": "JieBlDE26DjNOWs4",
+          "name": "Spotify account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "volume",
+        "volumePercent": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Volume', ``, 'number') }}"
+      },
+      "type": "n8n-nodes-base.spotifyTool",
+      "typeVersion": 1,
+      "position": [
+        4784,
+        240
+      ],
+      "id": "861fe848-7044-4202-b059-e6f460413f85",
+      "name": "Set Volume Spotify",
+      "credentials": {
+        "spotifyOAuth2Api": {
+          "id": "JieBlDE26DjNOWs4",
+          "name": "Spotify account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "modelId": {
+          "value": "models/gemini-3.1-flash-image-preview",
+          "mode": "list"
+        },
+        "prompt": "={{ $fromAI('Prompt') }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGeminiTool",
+      "typeVersion": 1.1,
+      "position": [
+        3440,
+        -176
+      ],
+      "id": "c5e83e6d-be05-4b7c-9f20-1be411b8c862",
+      "name": "Generate Image Tool",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Ksn0wfry2GS82ZtG",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-flash-latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        3808,
+        32
+      ],
+      "id": "07d66f31-d26b-4261-a19f-db3916cb4ea6",
+      "name": "FALLBACK Supervisor LLM",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Ksn0wfry2GS82ZtG",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "move",
+        "path": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('File_Path', ``, 'string') }}",
+        "toPath": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('To_Path', ``, 'string') }}"
+      },
+      "type": "n8n-nodes-base.nextCloudTool",
+      "typeVersion": 1,
+      "position": [
+        4272,
+        240
+      ],
+      "id": "18606ccd-1637-4b9f-9d78-451f6433a784",
+      "name": "Move File NC",
+      "credentials": {
+        "nextCloudApi": {
+          "id": "B9JRRuackLSYf8ae",
+          "name": "NextCloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "path": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Folder', ``, 'string') }}"
+      },
+      "type": "n8n-nodes-base.nextCloudTool",
+      "typeVersion": 1,
+      "position": [
+        4400,
+        240
+      ],
+      "id": "c4fc3f44-9e5e-4ed4-8dc2-2b7d29dcf895",
+      "name": "Create Folder NC",
+      "credentials": {
+        "nextCloudApi": {
+          "id": "B9JRRuackLSYf8ae",
+          "name": "NextCloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "id": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Track_ID', ``, 'string') }}"
+      },
+      "type": "n8n-nodes-base.spotifyTool",
+      "typeVersion": 1,
+      "position": [
+        4912,
+        240
+      ],
+      "id": "7d4c85c8-f96d-4030-950a-e5bf57fc2c15",
+      "name": "Add Song to Queue Spotify",
+      "credentials": {
+        "spotifyOAuth2Api": {
+          "id": "JieBlDE26DjNOWs4",
+          "name": "Spotify account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "track",
+        "operation": "search",
+        "query": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Search_Keyword', ``, 'string') }}",
+        "returnAll": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Return_All', ``, 'boolean') }}",
+        "limit": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Limit', `has to be an integer between 3 and 50`, 'number') }}",
+        "filters": {}
+      },
+      "type": "n8n-nodes-base.spotifyTool",
+      "typeVersion": 1,
+      "position": [
+        5040,
+        240
+      ],
+      "id": "a5d686db-76a5-4485-ae0e-e46cb4363d43",
+      "name": "Search for Track Spotify",
+      "credentials": {
+        "spotifyOAuth2Api": {
+          "id": "JieBlDE26DjNOWs4",
+          "name": "Spotify account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "startMusic",
+        "id": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Resource_ID', ``, 'string') }}"
+      },
+      "type": "n8n-nodes-base.spotifyTool",
+      "typeVersion": 1,
+      "position": [
+        5168,
+        240
+      ],
+      "id": "824d1cc4-62cc-4d12-8c18-b88ecc658a2e",
+      "name": "Start Playing Something Spotify",
+      "credentials": {
+        "spotifyOAuth2Api": {
+          "id": "JieBlDE26DjNOWs4",
+          "name": "Spotify account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {
+          "download": true
+        }
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        3424,
+        -432
+      ],
+      "id": "e19cc0d8-f6e6-47e3-9273-0f206c759c69",
+      "name": "Telegram Trigger",
+      "webhookId": "ceb35920-3205-42e0-a136-7e40e1e7dd1d",
+      "credentials": {
+        "telegramApi": {
+          "id": "orqlUOQjKdwDmoEn",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.message.text }}",
+        "needsFallback": true,
+        "options": {
+          "systemMessage": "You are the primary Supervisor Agent. Your job is to route user requests to the appropriate specialized sub-agent (Cloud, Music, or Status) or handle general conversation."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        3776,
+        -432
+      ],
+      "id": "74ccc45c-2cd9-4c4b-9e3c-096e8ab69362",
+      "name": "Supervisor Agent1",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "={{ $json.output }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        4128,
+        -432
+      ],
+      "id": "57c26001-f4ff-4c19-b6ef-0eeee4b42c60",
+      "name": "Send a text message",
+      "webhookId": "9b6479d5-0f7e-427b-8d48-50ea756f3b04",
+      "credentials": {
+        "telegramApi": {
+          "id": "orqlUOQjKdwDmoEn",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        3424,
+        384
+      ],
+      "id": "1ce041c8-163b-43e3-b0f6-ff60c91eb4c4",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "chatId": "7594236507",
+        "text": "=⚠️ *Workflow Error*\n\nWorkflow: {{ $json.workflow.name }}\nNode: {{ $json.execution.error.node.name }}\nError: {{ $json.execution.error.message }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "Markdown"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3680,
+        384
+      ],
+      "id": "a1be6af9-9af9-4de9-b5eb-b665387af62d",
+      "name": "Send Error Alert",
+      "webhookId": "35a5a85c-20a0-4d3d-bd19-83e113dcb9cc",
+      "credentials": {
+        "telegramApi": {
+          "id": "orqlUOQjKdwDmoEn",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "contextWindowLength": 8
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.2,
+      "position": [
+        3776,
+        176
+      ],
+      "id": "f76e83a4-d66b-496f-b944-978c6dd64b3b",
+      "name": "Memory Web"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.message.chat.id }}",
+        "contextWindowLength": 8
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.2,
+      "position": [
+        3776,
+        -608
+      ],
+      "id": "351dd527-ad05-47a7-83a9-265eaf7b1fd9",
+      "name": "Memory Telegram"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        4064,
+        -128
+      ],
+      "id": "bfedbe70-7e1d-4ffa-8019-8c582522debf",
+      "name": "Calculator"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Supervisor Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supervisor LLM": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Supervisor Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Supervisor Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Worker LLM": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Cloud Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Music Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Status Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cloud Agent": {
+      "ai_tool": [
+        [
+          {
+            "node": "Supervisor Agent",
+            "type": "ai_tool",
+            "index": 0
+          },
+          {
+            "node": "Supervisor Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Music Agent": {
+      "ai_tool": [
+        [
+          {
+            "node": "Supervisor Agent",
+            "type": "ai_tool",
+            "index": 0
+          },
+          {
+            "node": "Supervisor Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Status Agent": {
+      "ai_tool": [
+        [
+          {
+            "node": "Supervisor Agent",
+            "type": "ai_tool",
+            "index": 0
+          },
+          {
+            "node": "Supervisor Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Image Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Supervisor Agent",
+            "type": "ai_tool",
+            "index": 0
+          },
+          {
+            "node": "Supervisor Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download File NC": {
+      "ai_tool": [
+        [
+          {
+            "node": "Cloud Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload File NC": {
+      "ai_tool": [
+        [
+          {
+            "node": "Cloud Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Folder NC": {
+      "ai_tool": [
+        [
+          {
+            "node": "Cloud Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Playing Spotify": {
+      "ai_tool": [
+        [
+          {
+            "node": "Music Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Skip Track Spotify": {
+      "ai_tool": [
+        [
+          {
+            "node": "Music Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Volume Spotify": {
+      "ai_tool": [
+        [
+          {
+            "node": "Music Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "xpsystems.eu status-api service-list": {
+      "ai_tool": [
+        [
+          {
+            "node": "Status Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "xpsystems.eu status-api over-all": {
+      "ai_tool": [
+        [
+          {
+            "node": "Status Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supervisor Agent": {
+      "main": [
+        [
+          {
+            "node": "AI reply",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Postgres Logging",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FALLBACK Supervisor LLM": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Supervisor Agent",
+            "type": "ai_languageModel",
+            "index": 1
+          },
+          {
+            "node": "Supervisor Agent1",
+            "type": "ai_languageModel",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Move File NC": {
+      "ai_tool": [
+        [
+          {
+            "node": "Cloud Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Folder NC": {
+      "ai_tool": [
+        [
+          {
+            "node": "Cloud Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add Song to Queue Spotify": {
+      "ai_tool": [
+        [
+          {
+            "node": "Music Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search for Track Spotify": {
+      "ai_tool": [
+        [
+          {
+            "node": "Music Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start Playing Something Spotify": {
+      "ai_tool": [
+        [
+          {
+            "node": "Music Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Supervisor Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supervisor Agent1": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Send Error Alert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Memory Web": {
+      "ai_memory": [
+        [
+          {
+            "node": "Supervisor Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Memory Telegram": {
+      "ai_memory": [
+        [
+          {
+            "node": "Supervisor Agent1",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculator": {
+      "ai_tool": [
+        [
+          {
+            "node": "Supervisor Agent",
+            "type": "ai_tool",
+            "index": 0
+          },
+          {
+            "node": "Supervisor Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "33764a47-a343-42e1-a074-824db1110ab3",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "61322c84f3560e86dcff9fd4d8ad4261e71f6f78fd6fcde52f90558cbc1f2300"
+  },
+  "id": "2JHxccsqc5VNSSoD",
+  "tags": []
+}

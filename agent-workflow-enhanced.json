@@ -486,6 +486,73 @@
           "name": "Spotify account"
         }
       }
+    },
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {
+          "download": true
+        }
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        2000,
+        -576
+      ],
+      "id": "d687844b-100f-44a2-9fb5-d3dab9e6da33",
+      "name": "Telegram Trigger",
+      "webhookId": "ceb35920-3205-42e0-a136-7e40e1e7dd1d",
+      "credentials": {
+        "telegramApi": {
+          "id": "orqlUOQjKdwDmoEn",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.message.text }}",
+        "needsFallback": true,
+        "options": {
+          "systemMessage": "You are the primary Supervisor Agent. Your job is to route user requests to the appropriate specialized sub-agent (Cloud, Music, or Status) or handle general conversation."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        2352,
+        -800
+      ],
+      "id": "d24107f7-52f3-4d2d-8bd6-0daec46d23a4",
+      "name": "Supervisor Agent1"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "={{ $json.output }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2704,
+        -800
+      ],
+      "id": "abfa49b6-3ebd-4e40-9483-5f1a1aca6e80",
+      "name": "Send a text message",
+      "webhookId": "9b6479d5-0f7e-427b-8d48-50ea756f3b04",
+      "credentials": {
+        "telegramApi": {
+          "id": "orqlUOQjKdwDmoEn",
+          "name": "Telegram account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -506,6 +573,11 @@
         [
           {
             "node": "Supervisor Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Supervisor Agent1",
             "type": "ai_languageModel",
             "index": 0
           }
@@ -540,6 +612,11 @@
             "node": "Supervisor Agent",
             "type": "ai_tool",
             "index": 0
+          },
+          {
+            "node": "Supervisor Agent1",
+            "type": "ai_tool",
+            "index": 0
           }
         ]
       ]
@@ -551,6 +628,11 @@
             "node": "Supervisor Agent",
             "type": "ai_tool",
             "index": 0
+          },
+          {
+            "node": "Supervisor Agent1",
+            "type": "ai_tool",
+            "index": 0
           }
         ]
       ]
@@ -560,6 +642,11 @@
         [
           {
             "node": "Supervisor Agent",
+            "type": "ai_tool",
+            "index": 0
+          },
+          {
+            "node": "Supervisor Agent1",
             "type": "ai_tool",
             "index": 0
           }
@@ -694,6 +781,11 @@
             "node": "Supervisor Agent",
             "type": "ai_languageModel",
             "index": 1
+          },
+          {
+            "node": "Supervisor Agent1",
+            "type": "ai_languageModel",
+            "index": 1
           }
         ]
       ]
@@ -752,6 +844,28 @@
           }
         ]
       ]
+    },
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Supervisor Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supervisor Agent1": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
@@ -759,7 +873,7 @@
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "34b522b1-8cfe-4960-b3ee-38845b4df29c",
+  "versionId": "6f0e6d34-bcd9-4f98-b2af-7ff275252470",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "61322c84f3560e86dcff9fd4d8ad4261e71f6f78fd6fcde52f90558cbc1f2300"

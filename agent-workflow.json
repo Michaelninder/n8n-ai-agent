@@ -1,0 +1,174 @@
+{
+  "name": "agent-workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {
+          "responseMode": "responseNodes"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "5e881ee1-a113-4f7a-8b4e-c74121be523e",
+      "name": "When chat message received",
+      "webhookId": "cd6baac2-c985-4e29-9485-918ba38e3c91"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        280,
+        0
+      ],
+      "id": "ac415646-ac03-4fd0-9eda-1f8b8b3a8115",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-3.1-flash-lite-preview",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        224,
+        224
+      ],
+      "id": "fc506bc1-41e5-4277-86f1-b05b63a625a4",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Ksn0wfry2GS82ZtG",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "toolDescription": "Checks the over-all xpsystems.eu system status",
+        "url": "https://status.xpsystems.eu/api/status",
+        "options": {},
+        "optimizeResponse": true
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.4,
+      "position": [
+        352,
+        224
+      ],
+      "id": "ec4caa33-79bb-4d98-8228-d54c41f454fa",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Lists all xpsystems.eu status-services, their latency and status",
+        "url": "https://status.xpsystems.eu/api/services",
+        "options": {},
+        "optimizeResponse": true,
+        "dataField": "services",
+        "fieldsToInclude": "except",
+        "fields": "="
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.4,
+      "position": [
+        480,
+        224
+      ],
+      "id": "0d9533d4-575e-4ad6-b5b6-8152f2e87f00",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "message": "={{ $json.output }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chat",
+      "typeVersion": 1.3,
+      "position": [
+        688,
+        0
+      ],
+      "id": "ef6f3498-acd3-4ea0-9cf3-2e123989a3ca",
+      "name": "Chat",
+      "webhookId": "c34bb292-a0e7-41dd-9274-9e33ebcb093f"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Chat",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "24dc69b9-ead1-4cd1-aac7-4fac6ff39032",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "61322c84f3560e86dcff9fd4d8ad4261e71f6f78fd6fcde52f90558cbc1f2300"
+  },
+  "id": "2JHxccsqc5VNSSoD",
+  "tags": []
+}

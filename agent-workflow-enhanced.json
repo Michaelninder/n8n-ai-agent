@@ -11,7 +11,7 @@
       "typeVersion": 1.4,
       "position": [
         2032,
-        -576
+        -368
       ],
       "id": "f277f87e-a4ad-4262-9d50-82b97c981534",
       "name": "When chat message received",
@@ -47,7 +47,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        2408,
+        2352,
         -576
       ],
       "id": "f4156325-5472-4c0e-923c-a6762fdb480a",
@@ -75,7 +75,7 @@
       "type": "@n8n/n8n-nodes-langchain.agentTool",
       "typeVersion": 3,
       "position": [
-        2848,
+        3040,
         -352
       ],
       "id": "a915deb7-028b-4ee3-a757-9a72546a0477",
@@ -89,7 +89,7 @@
       "type": "@n8n/n8n-nodes-langchain.agentTool",
       "typeVersion": 3,
       "position": [
-        3280,
+        3792,
         -352
       ],
       "id": "b49f8555-4db7-495e-a7dc-f950dccecdb8",
@@ -103,7 +103,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        2464,
+        2336,
         -144
       ],
       "id": "c0606526-eeb4-48b8-b2e9-9041ea4b0499",
@@ -160,7 +160,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.4,
       "position": [
-        3776,
+        2896,
         -576
       ],
       "id": "9434fb15-8ca5-42d8-820d-6c243266a4cd",
@@ -181,7 +181,7 @@
       "type": "@n8n/n8n-nodes-langchain.chat",
       "typeVersion": 1.3,
       "position": [
-        4000,
+        4288,
         -576
       ],
       "id": "fd3a7a3b-bc08-44b7-8f03-db645d123c43",
@@ -198,7 +198,7 @@
       "type": "n8n-nodes-base.httpRequestTool",
       "typeVersion": 4.4,
       "position": [
-        3360,
+        3872,
         -144
       ],
       "id": "6f5a6d2f-d82f-4d9f-8961-18ea70b30883",
@@ -214,7 +214,7 @@
       "type": "n8n-nodes-base.httpRequestTool",
       "typeVersion": 4.4,
       "position": [
-        3488,
+        4000,
         -144
       ],
       "id": "40c4fb66-e447-498e-9cd1-056c9c9dce2f",
@@ -223,12 +223,12 @@
     {
       "parameters": {
         "operation": "download",
-        "path": "={{ $fromAI('File_Path') }}"
+        "path": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('File_Path', ``, 'string') }}"
       },
       "type": "n8n-nodes-base.nextCloudTool",
       "typeVersion": 1,
       "position": [
-        2592,
+        2464,
         -144
       ],
       "id": "9ef98af5-8aa3-4819-b6ac-fd9c56c22995",
@@ -242,12 +242,12 @@
     },
     {
       "parameters": {
-        "path": "={{ $fromAI('File_Path') }}"
+        "path": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('File_Path', ``, 'string') }}"
       },
       "type": "n8n-nodes-base.nextCloudTool",
       "typeVersion": 1,
       "position": [
-        2720,
+        2592,
         -144
       ],
       "id": "9166d683-e6ed-4a69-b802-d5fd42fbd569",
@@ -262,12 +262,13 @@
     {
       "parameters": {
         "resource": "folder",
-        "operation": "list"
+        "operation": "list",
+        "path": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Folder_Path', ``, 'string') }}"
       },
       "type": "n8n-nodes-base.nextCloudTool",
       "typeVersion": 1,
       "position": [
-        2848,
+        2720,
         -144
       ],
       "id": "21ba35fa-8ae7-40a2-949e-d44b81daa4bc",
@@ -286,7 +287,7 @@
       "type": "n8n-nodes-base.spotifyTool",
       "typeVersion": 1,
       "position": [
-        2976,
+        3104,
         -144
       ],
       "id": "a7fd9fc6-b160-4970-94e6-1329a5e5b54d",
@@ -305,7 +306,7 @@
       "type": "n8n-nodes-base.spotifyTool",
       "typeVersion": 1,
       "position": [
-        3104,
+        3232,
         -144
       ],
       "id": "33627dd3-0000-49b5-b3eb-9d23cd718f07",
@@ -320,12 +321,12 @@
     {
       "parameters": {
         "operation": "volume",
-        "volumePercent": "={{ $fromAI('Volume') }}"
+        "volumePercent": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Volume', ``, 'number') }}"
       },
       "type": "n8n-nodes-base.spotifyTool",
       "typeVersion": 1,
       "position": [
-        3232,
+        3360,
         -144
       ],
       "id": "43cace41-2939-467c-9b5d-2a974258f03a",
@@ -350,7 +351,7 @@
       "type": "@n8n/n8n-nodes-langchain.googleGeminiTool",
       "typeVersion": 1.1,
       "position": [
-        3568,
+        4080,
         -352
       ],
       "id": "f5832e72-228d-489c-8b3c-cbbd8431b358",
@@ -374,11 +375,182 @@
         -352
       ],
       "id": "bd1b51fd-9a75-43f8-aee1-d3180691705e",
-      "name": "Google Gemini Chat Model",
+      "name": "FALLBACK Supervisor LLM",
       "credentials": {
         "googlePalmApi": {
           "id": "Ksn0wfry2GS82ZtG",
           "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "move",
+        "path": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('File_Path', ``, 'string') }}",
+        "toPath": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('To_Path', ``, 'string') }}"
+      },
+      "type": "n8n-nodes-base.nextCloudTool",
+      "typeVersion": 1,
+      "position": [
+        2848,
+        -144
+      ],
+      "id": "2b840de6-030c-4ee0-b0ad-1c46a1d64af3",
+      "name": "Move File NC",
+      "credentials": {
+        "nextCloudApi": {
+          "id": "B9JRRuackLSYf8ae",
+          "name": "NextCloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "path": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Folder', ``, 'string') }}"
+      },
+      "type": "n8n-nodes-base.nextCloudTool",
+      "typeVersion": 1,
+      "position": [
+        2976,
+        -144
+      ],
+      "id": "6cfa1002-fd05-4825-b622-5de4d7e93c34",
+      "name": "Create Folder NC",
+      "credentials": {
+        "nextCloudApi": {
+          "id": "B9JRRuackLSYf8ae",
+          "name": "NextCloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "id": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Track_ID', ``, 'string') }}"
+      },
+      "type": "n8n-nodes-base.spotifyTool",
+      "typeVersion": 1,
+      "position": [
+        3488,
+        -144
+      ],
+      "id": "5120abc8-86d3-41bd-b0f5-7d4458b54a70",
+      "name": "Add Song to Queue Spotify",
+      "credentials": {
+        "spotifyOAuth2Api": {
+          "id": "JieBlDE26DjNOWs4",
+          "name": "Spotify account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "track",
+        "operation": "search",
+        "query": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Search_Keyword', ``, 'string') }}",
+        "returnAll": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Return_All', ``, 'boolean') }}",
+        "limit": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Limit', `has to be an integer between 3 and 50`, 'number') }}",
+        "filters": {}
+      },
+      "type": "n8n-nodes-base.spotifyTool",
+      "typeVersion": 1,
+      "position": [
+        3616,
+        -144
+      ],
+      "id": "03df5334-f9d4-4158-98c2-6e036c045fa1",
+      "name": "Search for Track Spotify",
+      "credentials": {
+        "spotifyOAuth2Api": {
+          "id": "JieBlDE26DjNOWs4",
+          "name": "Spotify account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "startMusic",
+        "id": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Resource_ID', ``, 'string') }}"
+      },
+      "type": "n8n-nodes-base.spotifyTool",
+      "typeVersion": 1,
+      "position": [
+        3744,
+        -144
+      ],
+      "id": "3180948c-bfbf-4e99-b3b5-d84ef339ea58",
+      "name": "Start Playing Something Spotify",
+      "credentials": {
+        "spotifyOAuth2Api": {
+          "id": "JieBlDE26DjNOWs4",
+          "name": "Spotify account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {
+          "download": true
+        }
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        2000,
+        -576
+      ],
+      "id": "d687844b-100f-44a2-9fb5-d3dab9e6da33",
+      "name": "Telegram Trigger",
+      "webhookId": "ceb35920-3205-42e0-a136-7e40e1e7dd1d",
+      "credentials": {
+        "telegramApi": {
+          "id": "orqlUOQjKdwDmoEn",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.message.text }}",
+        "needsFallback": true,
+        "options": {
+          "systemMessage": "You are the primary Supervisor Agent. Your job is to route user requests to the appropriate specialized sub-agent (Cloud, Music, or Status) or handle general conversation."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        2352,
+        -800
+      ],
+      "id": "d24107f7-52f3-4d2d-8bd6-0daec46d23a4",
+      "name": "Supervisor Agent1"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "={{ $json.output }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2704,
+        -800
+      ],
+      "id": "abfa49b6-3ebd-4e40-9483-5f1a1aca6e80",
+      "name": "Send a text message",
+      "webhookId": "9b6479d5-0f7e-427b-8d48-50ea756f3b04",
+      "credentials": {
+        "telegramApi": {
+          "id": "orqlUOQjKdwDmoEn",
+          "name": "Telegram account"
         }
       }
     }
@@ -401,6 +573,11 @@
         [
           {
             "node": "Supervisor Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Supervisor Agent1",
             "type": "ai_languageModel",
             "index": 0
           }
@@ -435,6 +612,11 @@
             "node": "Supervisor Agent",
             "type": "ai_tool",
             "index": 0
+          },
+          {
+            "node": "Supervisor Agent1",
+            "type": "ai_tool",
+            "index": 0
           }
         ]
       ]
@@ -446,6 +628,11 @@
             "node": "Supervisor Agent",
             "type": "ai_tool",
             "index": 0
+          },
+          {
+            "node": "Supervisor Agent1",
+            "type": "ai_tool",
+            "index": 0
           }
         ]
       ]
@@ -455,6 +642,11 @@
         [
           {
             "node": "Supervisor Agent",
+            "type": "ai_tool",
+            "index": 0
+          },
+          {
+            "node": "Supervisor Agent1",
             "type": "ai_tool",
             "index": 0
           }
@@ -564,11 +756,6 @@
       "main": [
         [
           {
-            "node": "Postgres Logging",
-            "type": "main",
-            "index": 0
-          },
-          {
             "node": "AI reply",
             "type": "main",
             "index": 0
@@ -587,13 +774,95 @@
         ]
       ]
     },
-    "Google Gemini Chat Model": {
+    "FALLBACK Supervisor LLM": {
       "ai_languageModel": [
         [
           {
             "node": "Supervisor Agent",
             "type": "ai_languageModel",
             "index": 1
+          },
+          {
+            "node": "Supervisor Agent1",
+            "type": "ai_languageModel",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Move File NC": {
+      "ai_tool": [
+        [
+          {
+            "node": "Cloud Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Folder NC": {
+      "ai_tool": [
+        [
+          {
+            "node": "Cloud Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add Song to Queue Spotify": {
+      "ai_tool": [
+        [
+          {
+            "node": "Music Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search for Track Spotify": {
+      "ai_tool": [
+        [
+          {
+            "node": "Music Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start Playing Something Spotify": {
+      "ai_tool": [
+        [
+          {
+            "node": "Music Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Supervisor Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supervisor Agent1": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -604,7 +873,7 @@
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "24158452-15c4-4139-866c-b03c9d56fa30",
+  "versionId": "6f0e6d34-bcd9-4f98-b2af-7ff275252470",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "61322c84f3560e86dcff9fd4d8ad4261e71f6f78fd6fcde52f90558cbc1f2300"

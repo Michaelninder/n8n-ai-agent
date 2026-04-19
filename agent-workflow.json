@@ -19,12 +19,13 @@
     },
     {
       "parameters": {
+        "needsFallback": true,
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        472,
+        600,
         0
       ],
       "id": "ac415646-ac03-4fd0-9eda-1f8b8b3a8115",
@@ -63,7 +64,7 @@
       "type": "n8n-nodes-base.httpRequestTool",
       "typeVersion": 4.4,
       "position": [
-        352,
+        480,
         224
       ],
       "id": "0d9533d4-575e-4ad6-b5b6-8152f2e87f00",
@@ -79,7 +80,7 @@
       "type": "n8n-nodes-base.httpRequestTool",
       "typeVersion": 4.4,
       "position": [
-        480,
+        608,
         224
       ],
       "id": "ec4caa33-79bb-4d98-8228-d54c41f454fa",
@@ -93,7 +94,7 @@
       "type": "@n8n/n8n-nodes-langchain.chat",
       "typeVersion": 1.3,
       "position": [
-        1072,
+        1856,
         0
       ],
       "id": "ef6f3498-acd3-4ea0-9cf3-2e123989a3ca",
@@ -109,7 +110,7 @@
       "type": "n8n-nodes-base.nextCloudTool",
       "typeVersion": 1,
       "position": [
-        608,
+        736,
         224
       ],
       "id": "98c79df2-4ee6-4704-b38d-367cfc82a8b1",
@@ -129,7 +130,7 @@
       "type": "n8n-nodes-base.nextCloudTool",
       "typeVersion": 1,
       "position": [
-        736,
+        864,
         224
       ],
       "id": "5c0e7f49-a5fb-4b6f-97cc-624b3626292b",
@@ -150,11 +151,224 @@
       "type": "n8n-nodes-base.nextCloudTool",
       "typeVersion": 1,
       "position": [
-        864,
+        992,
         224
       ],
       "id": "f495ba24-3f8f-4d49-a482-3025efefa9a5",
       "name": "List a folder in Nextcloud",
+      "credentials": {
+        "nextCloudApi": {
+          "id": "B9JRRuackLSYf8ae",
+          "name": "NextCloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "path": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Folder_Path', ``, 'string') }}"
+      },
+      "type": "n8n-nodes-base.nextCloudTool",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        224
+      ],
+      "id": "8b9e0318-d0d8-4bda-8cc4-45d989d71d9a",
+      "name": "Create a folder in Nextcloud",
+      "credentials": {
+        "nextCloudApi": {
+          "id": "B9JRRuackLSYf8ae",
+          "name": "NextCloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "edit",
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-2.5-flash-image",
+          "mode": "list",
+          "cachedResultName": "models/gemini-2.5-flash-image (Nano Banana)"
+        },
+        "prompt": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Prompt', ``, 'string') }}",
+        "images": {
+          "values": [
+            {
+              "binaryPropertyName": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('values0_Binary_Field_Name', ``, 'string') }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGeminiTool",
+      "typeVersion": 1.1,
+      "position": [
+        1248,
+        224
+      ],
+      "id": "bb24e480-589a-47da-bb09-4364bfdc4c05",
+      "name": "Edit an image in Google Gemini",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Ksn0wfry2GS82ZtG",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "text": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Prompt__User_Message_', ``, 'string') }}",
+        "needsFallback": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agentTool",
+      "typeVersion": 3,
+      "position": [
+        1376,
+        224
+      ],
+      "id": "ae97adcf-48bd-43c4-8115-b5216a1681fb",
+      "name": "AI Agent Tool",
+      "notesInFlow": false
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-3.1-flash-lite-preview",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        1008,
+        432
+      ],
+      "id": "a144b228-5611-4504-976a-d54df8c21175",
+      "name": "Google Gemini Chat Model1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Ksn0wfry2GS82ZtG",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-flash-lite-latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        352,
+        224
+      ],
+      "id": "8cd75aca-ff21-4c0d-bde5-fecd20cd4660",
+      "name": "Google Gemini Chat Model2",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Ksn0wfry2GS82ZtG",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-flash-lite-latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        1136,
+        432
+      ],
+      "id": "f23da92d-01d5-4b7d-a313-d874984f2695",
+      "name": "Google Gemini Chat Model3",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Ksn0wfry2GS82ZtG",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "path": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('File_Path', ``, 'string') }}",
+        "binaryPropertyName": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Put_Output_File_in_Field', ``, 'string') }}"
+      },
+      "type": "n8n-nodes-base.nextCloudTool",
+      "typeVersion": 1,
+      "position": [
+        1264,
+        432
+      ],
+      "id": "94479151-644d-4b09-a19a-0f3fd24f4a5c",
+      "name": "Download a file in Nextcloud1",
+      "credentials": {
+        "nextCloudApi": {
+          "id": "B9JRRuackLSYf8ae",
+          "name": "NextCloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('File_Path', ``, 'string') }}",
+        "binaryDataUpload": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Binary_File', ``, 'boolean') }}"
+      },
+      "type": "n8n-nodes-base.nextCloudTool",
+      "typeVersion": 1,
+      "position": [
+        1392,
+        432
+      ],
+      "id": "92858000-c868-4511-abe8-7b9df66d1cc5",
+      "name": "Upload a file in Nextcloud1",
+      "credentials": {
+        "nextCloudApi": {
+          "id": "B9JRRuackLSYf8ae",
+          "name": "NextCloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "operation": "list",
+        "path": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Folder_Path', ``, 'string') }}"
+      },
+      "type": "n8n-nodes-base.nextCloudTool",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        432
+      ],
+      "id": "89847023-92ac-422b-b251-8b0f4ffccade",
+      "name": "List a folder in Nextcloud1",
+      "credentials": {
+        "nextCloudApi": {
+          "id": "B9JRRuackLSYf8ae",
+          "name": "NextCloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "path": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Folder_Path', ``, 'string') }}"
+      },
+      "type": "n8n-nodes-base.nextCloudTool",
+      "typeVersion": 1,
+      "position": [
+        1648,
+        432
+      ],
+      "id": "d3aa4cfc-9f15-45e1-be4c-671095302012",
+      "name": "Create a folder in Nextcloud1",
       "credentials": {
         "nextCloudApi": {
           "id": "B9JRRuackLSYf8ae",
@@ -252,6 +466,116 @@
           }
         ]
       ]
+    },
+    "Create a folder in Nextcloud": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit an image in Google Gemini": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent Tool",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent Tool",
+            "type": "ai_languageModel",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Download a file in Nextcloud1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent Tool",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload a file in Nextcloud1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent Tool",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List a folder in Nextcloud1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent Tool",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a folder in Nextcloud1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent Tool",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
@@ -259,7 +583,7 @@
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "0e3bd0f8-df97-4d58-971f-fc30c65623cd",
+  "versionId": "05d1c29e-bd05-41c6-a85e-556582ca0b77",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "61322c84f3560e86dcff9fd4d8ad4261e71f6f78fd6fcde52f90558cbc1f2300"

@@ -47,7 +47,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        2408,
+        2416,
         -576
       ],
       "id": "f4156325-5472-4c0e-923c-a6762fdb480a",
@@ -160,7 +160,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.4,
       "position": [
-        3776,
+        3152,
         -576
       ],
       "id": "9434fb15-8ca5-42d8-820d-6c243266a4cd",
@@ -320,7 +320,7 @@
     {
       "parameters": {
         "operation": "volume",
-        "volumePercent": "={{ $fromAI('Volume') }}"
+        "volumePercent": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Volume', ``, 'number') }}"
       },
       "type": "n8n-nodes-base.spotifyTool",
       "typeVersion": 1,
@@ -374,7 +374,7 @@
         -352
       ],
       "id": "bd1b51fd-9a75-43f8-aee1-d3180691705e",
-      "name": "Google Gemini Chat Model",
+      "name": "FALLBACK Supervisor LLM",
       "credentials": {
         "googlePalmApi": {
           "id": "Ksn0wfry2GS82ZtG",
@@ -564,11 +564,6 @@
       "main": [
         [
           {
-            "node": "Postgres Logging",
-            "type": "main",
-            "index": 0
-          },
-          {
             "node": "AI reply",
             "type": "main",
             "index": 0
@@ -587,7 +582,7 @@
         ]
       ]
     },
-    "Google Gemini Chat Model": {
+    "FALLBACK Supervisor LLM": {
       "ai_languageModel": [
         [
           {
@@ -604,7 +599,7 @@
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "24158452-15c4-4139-866c-b03c9d56fa30",
+  "versionId": "bb0d5a15-3a2f-4fcd-a2d6-8e06aa55f44d",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "61322c84f3560e86dcff9fd4d8ad4261e71f6f78fd6fcde52f90558cbc1f2300"
